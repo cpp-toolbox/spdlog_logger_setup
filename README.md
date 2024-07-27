@@ -1,4 +1,4 @@
-# spdlog_logger_setup
+# spdlog_setup
 SUBPROJECT
 
 # dependencies
