@@ -17,7 +17,8 @@ void spdlog_setup(const std::vector<std::string> &subsystems) {
     console_sink->set_level(spdlog::level::debug);
 
     // Set log pattern
-    spdlog::set_pattern("[%Y-%m-%d %H:%M:%S.%F] [%l] %v");
+    //    spdlog::set_pattern("[%Y-%m-%d %H:%M:%S.%F] [%l] %v");
+    // Set the log pattern to include file name and line number
 
     // Create loggers based on the subsystems
     for (const auto &subsystem : subsystems) {
@@ -31,6 +32,8 @@ void spdlog_setup(const std::vector<std::string> &subsystems) {
         auto logger_name = subsystem;
         auto logger = std::make_shared<spdlog::logger>(logger_name, sinks.begin(), sinks.end());
         logger->set_level(spdlog::level::debug);
+
+        //        logger->set_pattern("[%Y-%m-%d %H:%M:%S] [%l] [%@] %v");
 
         // Register the logger with spdlog
         spdlog::register_logger(logger);
